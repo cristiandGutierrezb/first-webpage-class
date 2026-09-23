@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0b0417;
+  --foreground: #f0e7ff;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
+
+/* fondo animado: neones oscuros que se mueven */
+@keyframes fondo {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.fondo-neon {
+  background: linear-gradient(120deg, #1a0033, #00303a, #2d0036, #001f3f);
+  background-size: 400% 400%;
+  animation: fondo 18s ease infinite;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+.flotar { animation: flotar 4s ease-in-out infinite; }
+
+@keyframes brillo {
+  0%, 100% { filter: drop-shadow(0 0 12px #ff00d4) drop-shadow(0 0 30px #7b2cff); }
+  50%      { filter: drop-shadow(0 0 24px #00fff0) drop-shadow(0 0 50px #ff00d4); }
+}
+.brillo { animation: brillo 3s ease-in-out infinite; }
+
+@keyframes onda {
+  from { transform: translate(-50%, -50%) scale(0);   opacity: 1; }
+  to   { transform: translate(-50%, -50%) scale(28);  opacity: 0; }
+}
+.onda { animation: onda 900ms ease-out forwards; }
+
+@keyframes chispa {
+  from { transform: translate(-50%, -50%) translate(0, 0) scale(1); opacity: 1; }
+  to   { transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+.chispa { animation: chispa 900ms cubic-bezier(.2,.8,.3,1) forwards; }
+
+@keyframes sacudir {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  30%      { transform: scale(1.12) rotate(-2deg); }
+  60%      { transform: scale(0.97) rotate(1.5deg); }
+}
+.sacudir { animation: sacudir 600ms ease-out; }

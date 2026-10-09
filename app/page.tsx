@@ -33,7 +33,7 @@ export default function Home() {
           WebkitTextFillColor: "transparent",
         }}
       >
-        Creacion de Webpage para SO
+        Creacion de Webpage
       </h1>
 
       <p className="flotar text-sm text-white/50 sm:text-base">
